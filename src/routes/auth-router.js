@@ -7,7 +7,10 @@ router.post('/', authCtrl.signup);
 router.post('/login', authCtrl.login);
 router.post('/logout', bearer, authCtrl.logout);
 
+router.get('/reauth', bearer, authCtrl.reauth);
+
 router.post('/delete-account/verify', bearer, authCtrl.deleteAccount);
 router.post('/delete-account', bearer, authCtrl.preDeleteAccount);
+
 
 module.exports = router;

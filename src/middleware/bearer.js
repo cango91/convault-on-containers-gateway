@@ -33,6 +33,7 @@ module.exports = (req, res, next) => {
                     req.headers['Authorization'] = `Bearer ${newAccessToken}`;
                     res.set('New-Access-Token', newAccessToken);
                     req.user = jwt.decode(newAccessToken).user;
+                    res.locals.noManualRefresh = true;
                 } else {
                     res.clearCookie('refreshToken');
                     return res.status(401).json({ message: "Couldn't refresh token" });
