@@ -4,6 +4,7 @@ const express = require('express');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const authRouter = require('./routes/auth-router');
+const socialsRouter = require('./routes/socials-router');
 
 const TEST = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'test'
 const DEBUG = process.env.NODE_ENV ? process.env.NODE_ENV.toLocaleLowerCase() !== 'production' : true;
@@ -23,6 +24,7 @@ const configureApp = (middleware) => {
 
 const app = configureApp();
 app.use('/api/auth', authRouter);
+app.use('/api/socials', socialsRouter);
 
 if (!TEST) {
     app.listen(PORT, () => {

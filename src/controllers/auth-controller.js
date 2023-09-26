@@ -7,7 +7,7 @@ if (!AUTH_SERVICE_SECRET) {
     process.exit(1);
 }
 
-BASE_URL = process.env.AUTH_SERVICE_URL ? process.env.AUTH_SERVICE_URL : "http://localhost:3001/services/authentication/api"
+const BASE_URL = process.env.AUTH_SERVICE_URL ? process.env.AUTH_SERVICE_URL : "http://localhost:3001/services/authentication/api"
 
 const signup = async (req, res, next) => {
     try {
@@ -34,6 +34,7 @@ const signup = async (req, res, next) => {
 }
 
 const login = async (req, res, next) => {
+    console.log(BASE_URL);
     try {
         const response = await fetch(`${BASE_URL}/login`, {
             method: 'POST',
